@@ -14,6 +14,7 @@ public class ProductCategory {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    private double gstRate;
 
     public String getName() {
         return name;
@@ -38,6 +39,4 @@ public class ProductCategory {
     public void setGstRate(double gstRate) {
         this.gstRate = gstRate;
     }
-
-    private double gstRate;
 }

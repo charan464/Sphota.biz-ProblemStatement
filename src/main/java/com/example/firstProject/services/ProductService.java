@@ -13,11 +13,21 @@ public class ProductService {
     @Autowired
     ProductRepository productRepository;
 
+    @Autowired
+    ProductCategoryService productCategoryService;
+
     public List<Product> getAllProducts(){
         return productRepository.findAll();
     }
 
+    public Product getProductById(Long id){
+        return productRepository.findById(id).orElse(null);
+    }
+
     public Product createProduct(Product product){
-        return productRepository.save(product);
+        Product createdProduct = productRepository.save(product);
+        ProductCategory productCategory = productCategoryService.getCategoryById(product.getCategory().getId());
+        createdProduct.setCategory(productCategory);
+        return createdProduct;
     }
 }

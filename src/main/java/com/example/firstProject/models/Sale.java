@@ -1,9 +1,15 @@
 package com.example.firstProject.models;
 
-import jakarta.persistence.*;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import lombok.Data;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Data
@@ -13,18 +19,22 @@ public class Sale {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "product_id",nullable = false)
-    private Product product;
+    @OneToMany(mappedBy = "sale",cascade = CascadeType.ALL,orphanRemoval = true)
+    private List<SaleItem> items;
 
     private double taxAmount;
 
-    public Product getProduct() {
-        return product;
+    private double totalAmount;
+
+    private LocalDate saleDate;
+
+
+    public List<SaleItem> getItems() {
+        return items;
     }
 
-    public void setProduct(Product product) {
-        this.product = product;
+    public void setItems(List<SaleItem> items) {
+        this.items = items;
     }
 
     public double getTaxAmount() {
@@ -54,10 +64,6 @@ public class Sale {
     public void setSaleDate(LocalDate saleDate) {
         this.saleDate = saleDate;
     }
-
-    private double totalAmount;
-
-    private LocalDate saleDate;
 
     public double getTotalAmount() {
         return totalAmount;

@@ -12,8 +12,7 @@ public class Product {
     private Long id;
     private String name;
     private double price;
-
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="category_id",nullable = false)
     private ProductCategory category;
 
