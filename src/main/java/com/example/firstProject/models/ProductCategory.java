@@ -14,5 +14,30 @@ public class ProductCategory {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public double getGstRate() {
+        return gstRate;
+    }
+
+    public void setGstRate(double gstRate) {
+        this.gstRate = gstRate;
+    }
+
     private double gstRate;
 }
