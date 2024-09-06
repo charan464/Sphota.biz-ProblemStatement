@@ -2,6 +2,7 @@ package com.example.firstProject.models;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -19,7 +20,7 @@ public class Sale {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToMany(mappedBy = "sale",cascade = CascadeType.ALL,orphanRemoval = true)
+    @OneToMany(mappedBy = "sale",cascade = CascadeType.ALL,orphanRemoval = true,fetch = FetchType.EAGER)
     private List<SaleItem> items;
 
     private double taxAmount;

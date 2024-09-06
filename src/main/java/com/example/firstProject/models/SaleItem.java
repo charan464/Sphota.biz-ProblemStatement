@@ -1,5 +1,6 @@
 package com.example.firstProject.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -17,7 +18,16 @@ public class SaleItem {
 
     @ManyToOne
     @JoinColumn(name = "sale_id")
+    @JsonIgnore
     private Sale sale;
+
+    public Sale getSale() {
+        return sale;
+    }
+
+    public void setSale(Sale sale) {
+        this.sale = sale;
+    }
 
     @ManyToOne
     @JoinColumn(name = "product_id")
@@ -31,14 +41,6 @@ public class SaleItem {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Sale getSale() {
-        return sale;
-    }
-
-    public void setSale(Sale sale) {
-        this.sale = sale;
     }
 
     public Product getProduct() {
