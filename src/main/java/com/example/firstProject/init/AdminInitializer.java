@@ -1,4 +1,4 @@
-package com.example.firstProject.config;
+package com.example.firstProject.init;
 
 import com.example.firstProject.models.User;
 import com.example.firstProject.repositories.UserRespository;

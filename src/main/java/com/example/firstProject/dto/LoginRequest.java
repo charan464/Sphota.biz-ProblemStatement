@@ -1,4 +1,4 @@
-package com.example.firstProject.models;
+package com.example.firstProject.dto;
 
 public class LoginRequest {
     private String username;

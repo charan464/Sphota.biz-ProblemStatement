@@ -1,10 +1,9 @@
 package com.example.firstProject.controllers;
 
 
-import com.example.firstProject.config.JwtUtil;
-import com.example.firstProject.models.LoginRequest;
-import com.example.firstProject.models.LoginResponse;
-import com.example.firstProject.models.User;
+import com.example.firstProject.auth.JwtUtil;
+import com.example.firstProject.dto.LoginRequest;
+import com.example.firstProject.dto.LoginResponse;
 import com.example.firstProject.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

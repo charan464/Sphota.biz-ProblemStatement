@@ -1,5 +1,7 @@
 package com.example.firstProject.services;
 
+import com.example.firstProject.exception.CategoryAlreadyExistsException;
+import com.example.firstProject.exception.ProductAlreadyExistsException;
 import com.example.firstProject.models.Product;
 import com.example.firstProject.models.ProductCategory;
 import com.example.firstProject.repositories.ProductRepository;
@@ -7,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProductService {
@@ -24,10 +27,13 @@ public class ProductService {
         return productRepository.findById(id).orElse(null);
     }
 
-    public Product addProduct(Product product){
-        Product createdProduct = productRepository.save(product);
-        ProductCategory productCategory = productCategoryService.getCategoryById(product.getCategory().getId());
-        createdProduct.setCategory(productCategory);
-        return createdProduct;
+    public Product addProduct(Product product) throws ProductAlreadyExistsException {
+        Optional<Product> existingProduct = productRepository.findByName(product.getName());
+
+        if (existingProduct.isPresent()) {
+            throw new ProductAlreadyExistsException("Product already exists!");
+        }
+
+        return productRepository.save(product);
     }
 }

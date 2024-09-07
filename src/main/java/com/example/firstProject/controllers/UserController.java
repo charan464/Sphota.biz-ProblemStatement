@@ -34,7 +34,7 @@ public class UserController {
         return productService.getAllProducts();
     }
 
-    @PostMapping("/sales")
+    @PostMapping("/recordSaleAndGenerateBill")
     public Sale createSale(@RequestBody Sale sale){
         return saleService.createSale(sale);
     }

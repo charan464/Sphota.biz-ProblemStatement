@@ -1,4 +1,4 @@
-package com.example.firstProject.config;
+package com.example.firstProject.auth;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

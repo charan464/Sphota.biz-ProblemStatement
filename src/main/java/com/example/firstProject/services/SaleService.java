@@ -30,9 +30,11 @@ public class SaleService {
         for (SaleItem item : sale.getItems()) {
             Product product = productService.getProductById(item.getProduct().getId());
             ProductCategory productCategory = productCategoryService.getCategoryById(product.getCategory().getId());
+            product.setCategory(productCategory);
             double taxAmount = product.getPrice() * productCategory.getGstRate() / 100;
             item.setTaxAmount(taxAmount*item.getQuantity());
             item.setTotalAmount((product.getPrice() + taxAmount) * item.getQuantity());
+            item.setProduct(product);
             totalTaxAmount += taxAmount * item.getQuantity();
             totalAmount += item.getTotalAmount();
             item.setSale(sale);
