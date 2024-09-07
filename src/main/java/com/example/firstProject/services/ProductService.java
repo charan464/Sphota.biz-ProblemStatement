@@ -24,7 +24,7 @@ public class ProductService {
         return productRepository.findById(id).orElse(null);
     }
 
-    public Product createProduct(Product product){
+    public Product addProduct(Product product){
         Product createdProduct = productRepository.save(product);
         ProductCategory productCategory = productCategoryService.getCategoryById(product.getCategory().getId());
         createdProduct.setCategory(productCategory);

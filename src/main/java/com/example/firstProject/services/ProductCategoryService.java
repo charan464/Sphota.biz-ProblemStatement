@@ -21,7 +21,7 @@ public class ProductCategoryService {
         return productCategoryRepository.findById(id).orElse(null);
     }
 
-    public ProductCategory createCategory(ProductCategory productCategory){
+    public ProductCategory addCategory(ProductCategory productCategory){
         return productCategoryRepository.save(productCategory);
     }
 
