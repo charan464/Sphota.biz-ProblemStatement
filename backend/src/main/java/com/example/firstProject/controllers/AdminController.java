@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 
+// handles the requests involved in admin operations
+
 @RestController
 @RequestMapping("/admin")
 public class AdminController {

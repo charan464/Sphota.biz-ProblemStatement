@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
+// Service class for managing ProductCategory entities
 @Service
 public class ProductCategoryService {
 
@@ -25,6 +26,7 @@ public class ProductCategoryService {
                 .orElseThrow(() -> new EntityNotFoundException("category not found!"));
     }
 
+    // adds a new category to the product category table
     public void addCategory(ProductCategory productCategory) throws CategoryAlreadyExistsException {
         Optional<ProductCategory> existingCategory = productCategoryRepository.findByName(productCategory.getName());
         if (existingCategory.isPresent()) {

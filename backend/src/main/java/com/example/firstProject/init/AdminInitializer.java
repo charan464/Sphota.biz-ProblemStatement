@@ -1,7 +1,7 @@
 package com.example.firstProject.init;
 
 import com.example.firstProject.models.User;
-import com.example.firstProject.repositories.UserRespository;
+import com.example.firstProject.repositories.UserRepository;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -14,7 +14,7 @@ import java.util.Set;
 public class AdminInitializer {
 
     @Autowired
-    private UserRespository userRepository;
+    private UserRepository userRepository;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -22,6 +22,7 @@ public class AdminInitializer {
     @Value("${admin.password}")
     private String ADMIN_PASSWORD;
 
+    // adds a row for admin in users table if the row doesn't exist
     @PostConstruct
     public void run() {
         if (userRepository.findByUsername("admin").isEmpty()) {

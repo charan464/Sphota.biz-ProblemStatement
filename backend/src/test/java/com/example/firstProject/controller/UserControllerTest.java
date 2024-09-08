@@ -58,8 +58,8 @@ class UserControllerTest {
     @Test
     void testCreateSale_Success() {
         Sale sale = new Sale();
-        when(saleService.createSale(any(Sale.class))).thenReturn(sale);
-        ResponseEntity<?> response = userController.createSale(sale);
+        when(saleService.recordSale(any(Sale.class))).thenReturn(sale);
+        ResponseEntity<?> response = userController.recordSale(sale);
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertNotNull(response.getBody());
         assertEquals(sale, response.getBody());
@@ -68,8 +68,8 @@ class UserControllerTest {
     @Test
     void testCreateSale_Failure() {
         Sale sale = new Sale();
-        when(saleService.createSale(any(Sale.class))).thenThrow(new RuntimeException("Service error"));
-        ResponseEntity<?> response = userController.createSale(sale);
+        when(saleService.recordSale(any(Sale.class))).thenThrow(new RuntimeException("Service error"));
+        ResponseEntity<?> response = userController.recordSale(sale);
         assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, response.getStatusCode());
         assertNotNull(response.getBody());
         assertEquals("An error occurred while recording the sale", response.getBody());

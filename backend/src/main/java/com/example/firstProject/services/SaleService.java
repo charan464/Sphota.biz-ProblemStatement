@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.util.List;
 
+// Service class for managing Sale entities
 @Service
 public class SaleService {
 
@@ -23,7 +24,11 @@ public class SaleService {
     @Autowired
     ProductService productService;
 
-    public Sale createSale(Sale sale){
+    /* calculates total amount and tax for a sale,
+    adds the sale to the sale table and corresponding sale items to the sale_item table,
+    returns the sale along with total amount and total tax after recording the sale
+     */
+    public Sale recordSale(Sale sale){
         double totalTaxAmount = 0.0;
         double totalAmount = 0.0;
 
@@ -46,6 +51,7 @@ public class SaleService {
         return saleRepository.save(sale);
     }
 
+    // returns all the sales recorded in a given date
     public List<Sale> getSalesByDate(LocalDate date){
         return saleRepository.findBySaleDate(date);
     }

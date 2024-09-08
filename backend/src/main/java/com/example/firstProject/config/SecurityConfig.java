@@ -28,6 +28,11 @@ public class SecurityConfig {
     @Autowired
     JwtAuthenticationFilter jwtAuthenticationFilter;
 
+    /* adding role based authorization
+    a user can only access endpoints starting with /user
+    where-as admin can only access endpoints starting with /admin
+    both user and admin can access endpoint starting with /auth - the one which is used for login
+    **/
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
@@ -53,6 +58,7 @@ public class SecurityConfig {
         return configuration.getAuthenticationManager();
     }
 
+    // adding the configuration to allow the requests from a service running on port 3000
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();

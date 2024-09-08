@@ -58,7 +58,7 @@ class SaleServiceTest {
         when(productService.getProductById(1L)).thenReturn(product);
         when(productCategoryService.getCategoryById(1L)).thenReturn(category);
         when(saleRepository.save(any(Sale.class))).thenAnswer(invocation -> invocation.getArguments()[0]);
-        Sale savedSale = saleService.createSale(sale);
+        Sale savedSale = saleService.recordSale(sale);
         assertNotNull(savedSale);
         assertEquals(20.0, savedSale.getTaxAmount());
         assertEquals(220.0, savedSale.getTotalAmount());

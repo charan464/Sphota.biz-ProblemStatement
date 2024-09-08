@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
+// Service class for managing Product entities
 @Service
 public class ProductService {
 
@@ -25,6 +26,7 @@ public class ProductService {
                 .orElseThrow(() -> new EntityNotFoundException("product not found!"));
     }
 
+    // adds a new product to the product table
     public void addProduct(Product product) throws ProductAlreadyExistsException {
         Optional<Product> existingProduct = productRepository.findByName(product.getName());
         if (existingProduct.isPresent()) {

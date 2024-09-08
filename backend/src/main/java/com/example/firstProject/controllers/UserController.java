@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+// handles the requests involved in user operations
+
 @RestController
 @RequestMapping("/user")
 public class UserController {
@@ -31,12 +33,13 @@ public class UserController {
         }
     }
 
+    //records a sale and returns the bill
     @PostMapping("/recordSaleAndGenerateBill")
-    public ResponseEntity<?> createSale(@RequestBody Sale sale) {
+    public ResponseEntity<?> recordSale(@RequestBody Sale sale) {
         try {
             return ResponseEntity
                     .status(HttpStatus.OK)
-                    .body(saleService.createSale(sale));
+                    .body(saleService.recordSale(sale));
         } catch (Exception e) {
             return ResponseEntity
                     .status(HttpStatus.INTERNAL_SERVER_ERROR)
