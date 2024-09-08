@@ -57,6 +57,10 @@ public class User implements UserDetails {
         return roles;
     }
 
+    public void setRoles(Set<String> roles) {
+        this.roles = roles;
+    }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         Set<GrantedAuthority> authorities = new HashSet<>();
@@ -64,9 +68,5 @@ public class User implements UserDetails {
             authorities.add(new SimpleGrantedAuthority("ROLE_" + role));
         }
         return authorities;
-    }
-
-    public void setRoles(Set<String> roles) {
-        this.roles = roles;
     }
 }

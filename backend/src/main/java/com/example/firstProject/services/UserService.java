@@ -14,7 +14,7 @@ import java.util.Optional;
 import java.util.Set;
 
 @Service
-public class UserService implements UserDetailsService{
+public class UserService implements UserDetailsService {
 
     @Autowired
     UserRespository userRespository;
@@ -22,7 +22,6 @@ public class UserService implements UserDetailsService{
 
     public void saveUser(User user) throws UserAlreadyExistsException {
         Optional<User> existingUser = userRespository.findByUsername(user.getUsername());
-
         if (existingUser.isPresent()) {
             throw new UserAlreadyExistsException("User already exists!");
         }

@@ -19,13 +19,12 @@ public class UserController {
     SaleService saleService;
 
     @GetMapping("/products")
-    public ResponseEntity<?> getAllProducts(){
-        try{
+    public ResponseEntity<?> getAllProducts() {
+        try {
             return ResponseEntity
                     .status(HttpStatus.OK)
                     .body(productService.getAllProducts());
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             return ResponseEntity
                     .status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body("An error occurred while fetching products");
@@ -33,16 +32,15 @@ public class UserController {
     }
 
     @PostMapping("/recordSaleAndGenerateBill")
-    public ResponseEntity<?> createSale(@RequestBody Sale sale){
-        try{
+    public ResponseEntity<?> createSale(@RequestBody Sale sale) {
+        try {
             return ResponseEntity
                     .status(HttpStatus.OK)
                     .body(saleService.createSale(sale));
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             return ResponseEntity
                     .status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body("An error occurred while creating sale");
+                    .body("An error occurred while recording the sale");
         }
     }
 }

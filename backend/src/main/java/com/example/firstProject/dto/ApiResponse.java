@@ -1,6 +1,7 @@
 package com.example.firstProject.dto;
 
 public class ApiResponse {
+
     private String message;
 
     public String getMessage() {

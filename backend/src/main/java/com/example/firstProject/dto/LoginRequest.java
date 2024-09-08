@@ -1,9 +1,10 @@
 package com.example.firstProject.dto;
 
 public class LoginRequest {
-    private String username;
-    private String password;
 
+    private String username;
+
+    private String password;
 
     public String getUsername() {
         return username;

@@ -47,7 +47,7 @@ public class SaleService {
     }
 
     public List<Sale> getSalesByDate(LocalDate date){
-       return saleRepository.findBySaleDate(date);
+        return saleRepository.findBySaleDate(date);
     }
 
     public Double getTotalRevenueForCurrentDay(){

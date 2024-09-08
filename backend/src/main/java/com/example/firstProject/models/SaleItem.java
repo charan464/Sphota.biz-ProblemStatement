@@ -7,11 +7,10 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import lombok.Data;
 
 @Entity
-@Data
 public class SaleItem {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -21,19 +20,15 @@ public class SaleItem {
     @JsonIgnore
     private Sale sale;
 
-    public Sale getSale() {
-        return sale;
-    }
-
-    public void setSale(Sale sale) {
-        this.sale = sale;
-    }
-
     @ManyToOne
     @JoinColumn(name = "product_id")
     private Product product;
 
     private int quantity;
+
+    private double taxAmount;
+
+    private double totalAmount;
 
     public Long getId() {
         return id;
@@ -41,6 +36,14 @@ public class SaleItem {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Sale getSale() {
+        return sale;
+    }
+
+    public void setSale(Sale sale) {
+        this.sale = sale;
     }
 
     public Product getProduct() {
@@ -74,8 +77,4 @@ public class SaleItem {
     public void setTotalAmount(double totalAmount) {
         this.totalAmount = totalAmount;
     }
-
-    private double taxAmount;
-
-    private double totalAmount;
 }

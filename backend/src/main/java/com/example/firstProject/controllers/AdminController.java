@@ -45,15 +45,14 @@ public class AdminController {
         } catch (UserAlreadyExistsException e) {
             apiResponse.setMessage("User already exists!");
             return new ResponseEntity<>(apiResponse, HttpStatus.CONFLICT);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             apiResponse.setMessage("Unable to add user!");
             return new ResponseEntity<>(apiResponse, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
     @PostMapping("/addCategory")
-    public ResponseEntity<ApiResponse> addCategory(@RequestBody ProductCategory productCategory){
+    public ResponseEntity<ApiResponse> addCategory(@RequestBody ProductCategory productCategory) {
         ApiResponse apiResponse = new ApiResponse();
         try {
             productCategoryService.addCategory(productCategory);
@@ -62,15 +61,14 @@ public class AdminController {
         } catch (CategoryAlreadyExistsException e) {
             apiResponse.setMessage("Category already exists!");
             return new ResponseEntity<>(apiResponse, HttpStatus.CONFLICT);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             apiResponse.setMessage("Unable to add category!");
             return new ResponseEntity<>(apiResponse, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
     @PostMapping("/addProduct")
-    public ResponseEntity<ApiResponse> addProduct(@RequestBody Product product){
+    public ResponseEntity<ApiResponse> addProduct(@RequestBody Product product) {
         ApiResponse apiResponse = new ApiResponse();
         try {
             productService.addProduct(product);
@@ -79,8 +77,7 @@ public class AdminController {
         } catch (ProductAlreadyExistsException e) {
             apiResponse.setMessage("Product already exists!");
             return new ResponseEntity<>(apiResponse, HttpStatus.CONFLICT);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             apiResponse.setMessage("Unable to add product!");
             return new ResponseEntity<>(apiResponse, HttpStatus.INTERNAL_SERVER_ERROR);
         }
@@ -88,12 +85,11 @@ public class AdminController {
 
     @GetMapping("/categories")
     public ResponseEntity<?> getAllCategories() throws Exception {
-        try{
+        try {
             return ResponseEntity
                     .status(HttpStatus.OK)
                     .body(productCategoryService.getAllCategories());
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             return ResponseEntity
                     .status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body("An error occurred while fetching categories");
@@ -101,13 +97,12 @@ public class AdminController {
     }
 
     @GetMapping("/products")
-    public ResponseEntity<?> getAllProducts(){
-        try{
+    public ResponseEntity<?> getAllProducts() {
+        try {
             return ResponseEntity
                     .status(HttpStatus.OK)
                     .body(productService.getAllProducts());
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             return ResponseEntity
                     .status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body("An error occurred while fetching products");
@@ -115,13 +110,12 @@ public class AdminController {
     }
 
     @GetMapping("/sales/{date}")
-    public ResponseEntity<?> getSalesByDate(@PathVariable String date){
-        try{
+    public ResponseEntity<?> getSalesByDate(@PathVariable String date) {
+        try {
             return ResponseEntity
                     .status(HttpStatus.OK)
                     .body(saleService.getSalesByDate(LocalDate.parse(date)));
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             return ResponseEntity
                     .status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body("An error occurred while fetching sales");
@@ -129,8 +123,8 @@ public class AdminController {
     }
 
     @GetMapping("/revenue")
-    public ResponseEntity<?> getTotalRevenue(){
-        try{
+    public ResponseEntity<?> getTotalRevenue() {
+        try {
             RevenueSummary revenueResponse = new RevenueSummary();
             revenueResponse.setRevenueForCurrentDay(saleService.getTotalRevenueForCurrentDay());
             revenueResponse.setRevenueForCurrentMonth(saleService.getTotalRevenueForCurrentMonth());
@@ -138,8 +132,7 @@ public class AdminController {
             return ResponseEntity
                     .status(HttpStatus.OK)
                     .body(revenueResponse);
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             return ResponseEntity
                     .status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body("An error occurred while fetching revenue");
