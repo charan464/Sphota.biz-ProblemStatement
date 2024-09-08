@@ -1,0 +1,116 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    padding: 20px;
+    justify-content: center;
+}
+
+h1 {
+    color: #333;
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+    margin: auto;
+}
+
+label {
+    margin: 10px 0 5px;
+}
+
+input, select {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+nav {
+    background-color: #333;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav li {
+    margin: 0 5px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table, th, td {
+    border: 1px solid #ccc;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+#billTable, #billDetailsTable {
+    margin-top: 20px;
+}
+
+#totalAmount, #billTotalAmount {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+
+#recordSale {
+    margin-top: 20px;  
+
+    padding: 10px 20px; 
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.dashboard-link {
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 18px;
+    color: white;
+    padding: 10px 20px;
+    background-color: #4CAF50; 
+    border-radius: 5px;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.dashboard-link:hover {
+    background-color: #45a049; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}

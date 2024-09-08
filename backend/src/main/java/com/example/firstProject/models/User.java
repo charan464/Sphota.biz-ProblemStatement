@@ -29,8 +29,6 @@ public class User implements UserDetails {
     @Column(name = "role")
     private Set<String> roles;
 
-    // Getters and setters
-
     public String getUsername() {
         return username;
     }

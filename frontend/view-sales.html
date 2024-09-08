@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Sales</title>
+    <script src="js/view-sales.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="admin-dashboard.html" class="dashboard-link">Admin Dashboard</a></li>
+            <li><a href="logout.html" class="dashboard-link">Logout</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <h1>View Sales</h1>
+        <label for="salesDate">Date</label>
+        <input type="date" id="salesDate">
+        <button id="fetchSales" onclick="fetchSales()">Fetch Sales</button>
+        <table id="salesTable">
+            <thead>
+                <tr>
+                    <th>Sale ID</th>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Tax</th>
+                    <th>Amount (With Tax)</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+</body>
+</html>

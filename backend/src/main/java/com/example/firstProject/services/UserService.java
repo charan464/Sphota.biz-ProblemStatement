@@ -1,8 +1,6 @@
 package com.example.firstProject.services;
 
-import com.example.firstProject.exception.ProductAlreadyExistsException;
 import com.example.firstProject.exception.UserAlreadyExistsException;
-import com.example.firstProject.models.Product;
 import com.example.firstProject.models.User;
 import com.example.firstProject.repositories.UserRespository;
 import org.springframework.beans.factory.annotation.Autowired;

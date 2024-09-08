@@ -1,12 +1,12 @@
 package com.example.firstProject.controllers;
 
+import com.example.firstProject.dto.ApiResponse;
 import com.example.firstProject.dto.RevenueSummary;
 import com.example.firstProject.exception.CategoryAlreadyExistsException;
 import com.example.firstProject.exception.ProductAlreadyExistsException;
 import com.example.firstProject.exception.UserAlreadyExistsException;
 import com.example.firstProject.models.Product;
 import com.example.firstProject.models.ProductCategory;
-import com.example.firstProject.models.Sale;
 import com.example.firstProject.models.User;
 import com.example.firstProject.services.ProductCategoryService;
 import com.example.firstProject.services.ProductService;
@@ -18,7 +18,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
-import java.util.List;
 
 @RestController
 @RequestMapping("/admin")
@@ -37,57 +36,114 @@ public class AdminController {
     ProductService productService;
 
     @PostMapping("/addUser")
-    public ResponseEntity<String> addUser(@RequestBody User user) {
+    public ResponseEntity<ApiResponse> addUser(@RequestBody User user) {
+        ApiResponse apiResponse = new ApiResponse();
         try {
             userService.saveUser(user);
-            return new ResponseEntity<>("User added successfully", HttpStatus.CREATED);
+            apiResponse.setMessage("User added successfully");
+            return new ResponseEntity<>(apiResponse, HttpStatus.CREATED);
         } catch (UserAlreadyExistsException e) {
-            return new ResponseEntity<>("User already exists!", HttpStatus.CONFLICT);
+            apiResponse.setMessage("User already exists!");
+            return new ResponseEntity<>(apiResponse, HttpStatus.CONFLICT);
+        }
+        catch (Exception e) {
+            apiResponse.setMessage("Unable to add user!");
+            return new ResponseEntity<>(apiResponse, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
     @PostMapping("/addCategory")
-    public ResponseEntity<String> addCategory(@RequestBody ProductCategory productCategory){
+    public ResponseEntity<ApiResponse> addCategory(@RequestBody ProductCategory productCategory){
+        ApiResponse apiResponse = new ApiResponse();
         try {
             productCategoryService.addCategory(productCategory);
-            return new ResponseEntity<>("Category added successfully", HttpStatus.CREATED);
+            apiResponse.setMessage("Category added successfully");
+            return new ResponseEntity<>(apiResponse, HttpStatus.CREATED);
         } catch (CategoryAlreadyExistsException e) {
-            return new ResponseEntity<>("Category already exists!", HttpStatus.CONFLICT);
+            apiResponse.setMessage("Category already exists!");
+            return new ResponseEntity<>(apiResponse, HttpStatus.CONFLICT);
+        }
+        catch (Exception e) {
+            apiResponse.setMessage("Unable to add category!");
+            return new ResponseEntity<>(apiResponse, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
     @PostMapping("/addProduct")
-    public ResponseEntity<String> addProduct(@RequestBody Product product){
+    public ResponseEntity<ApiResponse> addProduct(@RequestBody Product product){
+        ApiResponse apiResponse = new ApiResponse();
         try {
             productService.addProduct(product);
-            return new ResponseEntity<>("Product added successfully", HttpStatus.CREATED);
+            apiResponse.setMessage("Product added successfully");
+            return new ResponseEntity<>(apiResponse, HttpStatus.CREATED);
         } catch (ProductAlreadyExistsException e) {
-            return new ResponseEntity<>("Product already exists!", HttpStatus.CONFLICT);
+            apiResponse.setMessage("Product already exists!");
+            return new ResponseEntity<>(apiResponse, HttpStatus.CONFLICT);
+        }
+        catch (Exception e) {
+            apiResponse.setMessage("Unable to add product!");
+            return new ResponseEntity<>(apiResponse, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
     @GetMapping("/categories")
-    public List<ProductCategory> getAllCategories(){
-        return productCategoryService.getAllCategories();
+    public ResponseEntity<?> getAllCategories() throws Exception {
+        try{
+            return ResponseEntity
+                    .status(HttpStatus.OK)
+                    .body(productCategoryService.getAllCategories());
+        }
+        catch (Exception e){
+            return ResponseEntity
+                    .status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("An error occurred while fetching categories");
+        }
     }
 
     @GetMapping("/products")
-    public List<Product> getAllProducts(){
-        return productService.getAllProducts();
+    public ResponseEntity<?> getAllProducts(){
+        try{
+            return ResponseEntity
+                    .status(HttpStatus.OK)
+                    .body(productService.getAllProducts());
+        }
+        catch (Exception e){
+            return ResponseEntity
+                    .status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("An error occurred while fetching products");
+        }
     }
 
     @GetMapping("/sales/{date}")
-    public List<Sale> getSalesByDate(@PathVariable String date){
-        return saleService.getSalesByDate(LocalDate.parse(date));
+    public ResponseEntity<?> getSalesByDate(@PathVariable String date){
+        try{
+            return ResponseEntity
+                    .status(HttpStatus.OK)
+                    .body(saleService.getSalesByDate(LocalDate.parse(date)));
+        }
+        catch (Exception e){
+            return ResponseEntity
+                    .status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("An error occurred while fetching sales");
+        }
     }
 
     @GetMapping("/revenue")
-    public RevenueSummary getTotalRevenue(){
-        RevenueSummary revenueResponse = new RevenueSummary();
-        revenueResponse.setRevenueForCurrentDay(saleService.getTotalRevenueForCurrentDay());
-        revenueResponse.setRevenueForCurrentMonth(saleService.getTotalRevenueForCurrentMonth());
-        revenueResponse.setRevenueForCurrentYear(saleService.getTotalRevenueForCurrentYear());
-        return revenueResponse;
+    public ResponseEntity<?> getTotalRevenue(){
+        try{
+            RevenueSummary revenueResponse = new RevenueSummary();
+            revenueResponse.setRevenueForCurrentDay(saleService.getTotalRevenueForCurrentDay());
+            revenueResponse.setRevenueForCurrentMonth(saleService.getTotalRevenueForCurrentMonth());
+            revenueResponse.setRevenueForCurrentYear(saleService.getTotalRevenueForCurrentYear());
+            return ResponseEntity
+                    .status(HttpStatus.OK)
+                    .body(revenueResponse);
+        }
+        catch (Exception e){
+            return ResponseEntity
+                    .status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("An error occurred while fetching revenue");
+        }
     }
 
 }
