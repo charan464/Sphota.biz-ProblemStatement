@@ -20,7 +20,7 @@ public class UserService implements UserDetailsService {
     UserRespository userRespository;
 
 
-    public void saveUser(User user) throws UserAlreadyExistsException {
+    public void addUser(User user) throws UserAlreadyExistsException {
         Optional<User> existingUser = userRespository.findByUsername(user.getUsername());
         if (existingUser.isPresent()) {
             throw new UserAlreadyExistsException("User already exists!");

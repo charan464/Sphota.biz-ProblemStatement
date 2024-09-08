@@ -39,7 +39,7 @@ public class AdminController {
     public ResponseEntity<ApiResponse> addUser(@RequestBody User user) {
         ApiResponse apiResponse = new ApiResponse();
         try {
-            userService.saveUser(user);
+            userService.addUser(user);
             apiResponse.setMessage("User added successfully");
             return new ResponseEntity<>(apiResponse, HttpStatus.CREATED);
         } catch (UserAlreadyExistsException e) {
