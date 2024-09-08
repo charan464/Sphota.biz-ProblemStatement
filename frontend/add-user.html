@@ -1,33 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Add User</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
-</head>
-<body>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
+    />
+  </head>
+  <body>
     <nav>
-        <ul>
-            <li><a href="admin-dashboard.html" class="dashboard-link">Admin Dashboard</a></li>
-            <li><a href="logout.html" class="dashboard-link">Logout</a></li>
-        </ul>
+      <ul>
+        <li>
+          <a href="admin-dashboard.html" class="dashboard-link"
+            >Admin Dashboard</a
+          >
+        </li>
+        <li><a href="logout.html" class="dashboard-link">Logout</a></li>
+      </ul>
     </nav>
     <div class="container">
-        <h1>Add User</h1>
-        <form id="addUserForm">
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required>
-            
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
-            
-            <button type="submit">Add User</button>
-        </form>
+      <h1>Add User</h1>
+      <form id="addUserForm">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required />
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required />
+
+        <button type="submit">Add User</button>
+      </form>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script src="js/add-user.js"></script>
-</body>
+  </body>
 </html>

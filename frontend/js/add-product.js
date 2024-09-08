@@ -23,7 +23,7 @@ async function fetchCategories() {
 
 
 
-document.getElementById('addProductForm').addEventListener('submit', async function(event) {
+document.getElementById('addProductForm').addEventListener('submit', async function (event) {
     event.preventDefault();
 
     const name = document.getElementById('name').value;

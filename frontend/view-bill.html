@@ -1,40 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Generated Bill</title>
-    <link rel="stylesheet" href="styles.css">
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
-</head>
-<body>
+    <link rel="stylesheet" href="styles.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
+    />
+  </head>
+  <body>
     <nav>
-        <ul>
-            <li><a href="user-dashboard.html" class="dashboard-link">User Dashboard</a></li>
-            <li><a href="logout.html" class="dashboard-link">Logout</a></li>
-        </ul>
+      <ul>
+        <li>
+          <a href="user-dashboard.html" class="dashboard-link"
+            >User Dashboard</a
+          >
+        </li>
+        <li><a href="logout.html" class="dashboard-link">Logout</a></li>
+      </ul>
     </nav>
-    <div class="container"><h1>Generated Bill</h1>
-    <table id="billTable">
+    <div class="container">
+      <h1>Generated Bill</h1>
+      <table id="billTable">
         <thead>
-            <tr>
-                <th>Product</th>
-                <th>Category</th>
-                <th>Price</th>
-                <th>Tax</th>
-                <th>Quantity</th>
-                <th>Amount (With Tax)</th>
-            </tr>
+          <tr>
+            <th>Product</th>
+            <th>Category</th>
+            <th>Price</th>
+            <th>Tax</th>
+            <th>Quantity</th>
+            <th>Amount (With Tax)</th>
+          </tr>
         </thead>
         <tbody></tbody>
-    </table>
-    <h3 id="amount">Amount (Without Tax) : </h3>
-    <h3 id="totalGST">Total Tax : </h3>
-    <h3 id="totalAmount">Total Amount (With Tax) : </h3>
-</div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+      </table>
+      <h3 id="amount">Amount (Without Tax) :</h3>
+      <h3 id="totalGST">Total Tax :</h3>
+      <h3 id="totalAmount">Total Amount (With Tax) :</h3>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script src="js/view-bill.js"></script>
-</body>
+  </body>
 </html>

@@ -1,7 +1,11 @@
+document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('fetchSales')?.addEventListener('click', fetchSales);
+});
+
 async function fetchSales() {
     const date = document.getElementById('salesDate').value;
     const token = localStorage.getItem('jwtToken');
-    const response = await fetch(`http://localhost:8085/admin/sales/${date}`,{
+    const response = await fetch(`http://localhost:8085/admin/sales/${date}`, {
         method: 'GET',
         headers: {
             'Authorization': `Bearer ${token}`

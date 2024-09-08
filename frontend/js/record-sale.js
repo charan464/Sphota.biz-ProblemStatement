@@ -47,12 +47,12 @@ function addProductToList() {
     const total = selectedProduct.price + gstAmount;
 
     const saleItem = {
-        product: { 
-            id: selectedProduct.id, 
-            name: selectedProduct.name, 
-            price: selectedProduct.price, 
+        product: {
+            id: selectedProduct.id,
+            name: selectedProduct.name,
+            price: selectedProduct.price,
             gstRate: gstAmount,
-            categoryName : selectedProduct.category.name
+            categoryName: selectedProduct.category.name
         },
         quantity: parseInt(quantity),
         gstAmount: gstAmount,

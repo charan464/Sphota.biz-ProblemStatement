@@ -1,4 +1,4 @@
-document.getElementById('loginForm').addEventListener('submit', async function(event) {
+document.getElementById('loginForm').addEventListener('submit', async function (event) {
     event.preventDefault();
 
     const username = document.getElementById('username').value;
@@ -17,7 +17,7 @@ document.getElementById('loginForm').addEventListener('submit', async function(e
         localStorage.setItem('jwtToken', data.token);
         const userRole = await getUserRole(data.token);
         if (userRole === 'ROLE_ADMIN') {
-           window.location.href = 'admin-dashboard.html';
+            window.location.href = 'admin-dashboard.html';
         } else if (userRole === 'ROLE_USER') {
             window.location.href = 'user-dashboard.html';
         }
@@ -27,7 +27,7 @@ document.getElementById('loginForm').addEventListener('submit', async function(e
 });
 
 async function getUserRole(token) {
-const decodedToken = jwt_decode(token);
-const roles = decodedToken.roles;
-return roles[0];
+    const decodedToken = jwt_decode(token);
+    const roles = decodedToken.roles;
+    return roles[0];
 }

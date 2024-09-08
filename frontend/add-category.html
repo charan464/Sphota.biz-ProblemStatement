@@ -1,31 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Add Category</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
-</head>
-<body>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
+    />
+  </head>
+  <body>
     <nav>
-        <ul>
-            <li><a href="admin-dashboard.html" class="dashboard-link">Admin Dashboard</a></li>
-            <li><a href="logout.html" class="dashboard-link">Logout</a></li>
-        </ul>
+      <ul>
+        <li>
+          <a href="admin-dashboard.html" class="dashboard-link"
+            >Admin Dashboard</a
+          >
+        </li>
+        <li><a href="logout.html" class="dashboard-link">Logout</a></li>
+      </ul>
     </nav>
     <div class="container">
-        <h1>Add Category</h1>
-        <form id="addCategoryForm">
-            <label for="categoryName">Category Name</label>
-            <input type="text" id="name" name="name" required>
-            <label for="gstRate">GST Rate (%)</label>
-            <input type="number" id="gstRate" name="gstRate" required>
-            <button type="submit">Add Category</button>
-        </form>
+      <h1>Add Category</h1>
+      <form id="addCategoryForm">
+        <label for="categoryName">Category Name</label>
+        <input type="text" id="name" name="name" required />
+        <label for="gstRate">GST Rate (%)</label>
+        <input type="number" id="gstRate" name="gstRate" required />
+        <button type="submit">Add Category</button>
+      </form>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script src="js/add-category.js"></script>
-</body>
+  </body>
 </html>
