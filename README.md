@@ -22,16 +22,44 @@
 - 16.User can only record sale and view bill
 
 # tables with sample data
-- users
-- +----+--------------------------------------------------------------+----------+
-- | id | password                                                     | username |
-- +----+--------------------------------------------------------------+----------+
-- |  1 | $2a$10$qYqmZadpjXFL2B0cQxUOXO/h0.RQa3UL8Y3ldS.RFRi9diLVrDTWa | admin    |
-- |  2 | $2a$10$Std4mq3CxxRuztBLB90vmeCZ46fVH62h5dqSJyKOdBw/6KQqz0Ow2 | user1    |
-- |  3 | $2a$10$SDb8gPE3REX07QcxXlxds.Vxh.rNzGjcZSfHgdKMtJY.XWtL9rhwa | user3    |
-- |  4 | $2a$10$5KmZ4ORhyk0nkg7TzlgnBOpcyi2Vhfv80Wz0pUF0sFj6A6ziO3S.. | user2    |
-- |  5 | $2a$10$BE2uZRsEdgBXLjQJSc2p/ejBrnqDL65XADLW5L/AyzNzCz3Vi0A/C | user4    |
-- +----+--------------------------------------------------------------+----------+
+## users
+<table border="1">
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>password</th>
+      <th>username</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>$2a$10$qYqmZadpjXFL2B0cQxUOXO/h0.RQa3UL8Y3ldS.RFRi9diLVrDTWa</td>
+      <td>admin</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>$2a$10$Std4mq3CxxRuztBLB90vmeCZ46fVH62h5dqSJyKOdBw/6KQqz0Ow2</td>
+      <td>user1</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>$2a$10$SDb8gPE3REX07QcxXlxds.Vxh.rNzGjcZSfHgdKMtJY.XWtL9rhwa</td>
+      <td>user3</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>$2a$10$5KmZ4ORhyk0nkg7TzlgnBOpcyi2Vhfv80Wz0pUF0sFj6A6ziO3S..</td>
+      <td>user2</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>$2a$10$BE2uZRsEdgBXLjQJSc2p/ejBrnqDL65XADLW5L/AyzNzCz3Vi0A/C</td>
+      <td>user4</td>
+    </tr>
+  </tbody>
+</table>
+
 
 - user_roles
 - +---------+-------+
