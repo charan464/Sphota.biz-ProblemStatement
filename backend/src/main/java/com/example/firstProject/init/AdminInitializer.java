@@ -23,6 +23,7 @@ public class AdminInitializer {
     private String ADMIN_PASSWORD;
 
     // adds a row for admin in users table if the row doesn't exist
+    // doing it allows us to use the same login logic for admin and normal user
     @PostConstruct
     public void run() {
         if (userRepository.findByUsername("admin").isEmpty()) {

@@ -26,7 +26,7 @@ public class SaleService {
 
     /* calculates total amount and tax for a sale,
     adds the sale to the sale table and corresponding sale items to the sale_item table,
-    returns the sale along with total amount and total tax after recording the sale
+    returns the sale along with total amount and total tax
      */
     public Sale recordSale(Sale sale){
         double totalTaxAmount = 0.0;

@@ -20,7 +20,7 @@ public class UserService implements UserDetailsService {
     @Autowired
     UserRepository userRepository;
 
-    // adds a new user to the users table;
+    // adds a new user to the users table
     public void addUser(User user) throws UserAlreadyExistsException {
         Optional<User> existingUser = userRepository.findByUsername(user.getUsername());
         if (existingUser.isPresent()) {

@@ -24,7 +24,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     private UserService userService;
 
 
-    //Processes the HTTP request to check for a valid JWT token and authenticate the user
+    //processes the HTTP request to check for a valid JWT token and authenticate the user
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response,
                                     FilterChain filterChain) throws ServletException, IOException {

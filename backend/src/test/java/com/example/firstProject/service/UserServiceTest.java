@@ -11,7 +11,6 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.util.Optional;
 import java.util.Set;
@@ -27,9 +26,6 @@ class UserServiceTest {
     @Mock
     private UserRepository userRepository;
 
-    @Mock
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
-
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
@@ -41,7 +37,6 @@ class UserServiceTest {
         user.setUsername("testUser");
         user.setPassword("password");
         when(userRepository.findByUsername("testUser")).thenReturn(Optional.empty());
-        when(bCryptPasswordEncoder.encode("password")).thenReturn("encodedPassword");
         userService.addUser(user);
         assertEquals(Set.of("USER"), user.getRoles());
     }

@@ -23,9 +23,9 @@ async function fetchSales() {
             row.innerHTML = `
                 <td>${sale.id}</td>
                 <td>${item.product.name}</td>
-                <td>${item.quantity}</td>
                 <td>${item.product.price}</td>
-                <td>${item.taxAmount}</td>
+                <td>${item.taxAmount/item.quantity}</td>
+                <td>${item.quantity}</td>
                 <td>${item.totalAmount}</td>
             `;
             salesTableBody.appendChild(row);

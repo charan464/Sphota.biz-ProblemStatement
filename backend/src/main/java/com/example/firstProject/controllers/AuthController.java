@@ -30,7 +30,7 @@ public class AuthController {
     @Autowired
     private UserService userService;
 
-    //Authenticates a user and generates a JWT token upon successful login
+    //authenticates a user and generates a JWT token upon successful login
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginRequest loginRequest) {
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getUsername(),

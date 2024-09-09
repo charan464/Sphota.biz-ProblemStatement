@@ -111,6 +111,7 @@ public class AdminController {
         }
     }
 
+    //returns all the sales recorded in a given date
     @GetMapping("/sales/{date}")
     public ResponseEntity<?> getSalesByDate(@PathVariable String date) {
         try {

@@ -3,6 +3,7 @@ package com.example.firstProject.config;
 
 import com.example.firstProject.auth.JwtAuthenticationFilter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -27,6 +28,9 @@ public class SecurityConfig {
 
     @Autowired
     JwtAuthenticationFilter jwtAuthenticationFilter;
+
+    @Value("${frontend.base.url}")
+    private String FRONT_END_BASE_URL;
 
     /* adding role based authorization
     a user can only access endpoints starting with /user
@@ -58,11 +62,11 @@ public class SecurityConfig {
         return configuration.getAuthenticationManager();
     }
 
-    // adding the configuration to allow the requests from a service running on port 3000
+    // adding the configuration to allow the requests from front-end service
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(List.of("http://localhost:3000"));
+        configuration.setAllowedOrigins(List.of(FRONT_END_BASE_URL));
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         configuration.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type", "Accept"));
 
