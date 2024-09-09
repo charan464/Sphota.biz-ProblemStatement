@@ -20,6 +20,8 @@ async function fetchProducts() {
     productData = await response.json();
     const productSelect = document.getElementById('productSelect');
 
+    // Iterate over each product and create an option element for the dropdown
+
     productData.forEach(product => {
         const option = document.createElement('option');
         option.value = product.id;
@@ -46,6 +48,9 @@ function addProductToList() {
     const gstAmount = (selectedProduct.price * selectedProduct.category.gstRate) / 100;
     const total = selectedProduct.price + gstAmount;
 
+    //creating a sale item and adding it to the sale items list
+    // a sale item is a combination of product,quantity,gstAmount and total amount
+
     const saleItem = {
         product: {
             id: selectedProduct.id,
@@ -67,6 +72,9 @@ function addProductToList() {
 function displaySaleItems() {
     const saleItemsTableBody = document.querySelector('#saleItemsTable tbody');
     saleItemsTableBody.innerHTML = '';
+
+    // add details of each sale item as a row to the table
+    // adding delete button to allow user to remove added sale item
 
     saleItems.forEach((item, index) => {
         const row = document.createElement('tr');
@@ -102,7 +110,6 @@ async function recordSaleAndRedirect() {
         return;
     }
 
-
     const salePayload = {
         items: saleItems.map(item => ({
             product: { id: item.product.id },
@@ -111,28 +118,23 @@ async function recordSaleAndRedirect() {
     };
 
 
+    const token = localStorage.getItem('jwtToken');
+    const response = await fetch('http://localhost:8085/user/recordSaleAndGenerateBill', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify(salePayload)
+    });
 
-    try {
-        const token = localStorage.getItem('jwtToken');
-        const response = await fetch('http://localhost:8085/user/recordSaleAndGenerateBill', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
-            },
-            body: JSON.stringify(salePayload)
-        });
-
-        if (response.ok) {
-            const data = await response.json();
-            localStorage.setItem('saleItems', JSON.stringify(saleItems));
-            localStorage.setItem('saleResponse', JSON.stringify(data));
-            window.location.href = 'view-bill.html';
-        } else {
-            toastr.error('unable to record sale');
-        }
-    } catch (error) {
-        toastr.error('An error occurred while recording the sale. Please try again.');
+    if (response.ok) {
+        const data = await response.json();
+        localStorage.setItem('saleItems', JSON.stringify(saleItems));
+        localStorage.setItem('saleResponse', JSON.stringify(data));
+        window.location.href = 'view-bill.html';
+    } else {
+        toastr.error('unable to record sale');
     }
 }
 

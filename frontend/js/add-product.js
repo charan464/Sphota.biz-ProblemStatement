@@ -13,6 +13,9 @@ async function fetchCategories() {
     const categories = await response.json();
     const categorySelect = document.getElementById('category');
     categorySelect.innerHTML = '<option value="" disabled selected>Select a category</option>';
+
+    // Iterate over each category and create an option element for the dropdown
+
     categories.forEach(category => {
         const option = document.createElement('option');
         option.value = category.id;

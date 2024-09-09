@@ -15,6 +15,8 @@ async function fetchSales() {
     const salesTableBody = document.querySelector('#salesTable tbody');
     salesTableBody.innerHTML = '';
 
+    // add details of each sale item as a row to the table
+
     sales.forEach(sale => {
         sale.items.forEach(item => {
             const row = document.createElement('tr');

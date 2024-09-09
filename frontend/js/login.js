@@ -16,6 +16,9 @@ document.getElementById('loginForm').addEventListener('submit', async function (
         const data = await response.json();
         localStorage.setItem('jwtToken', data.token);
         const userRole = await getUserRole(data.token);
+        
+        // redirect to the dashboard according to the role
+
         if (userRole === 'ROLE_ADMIN') {
             window.location.href = 'admin-dashboard.html';
         } else if (userRole === 'ROLE_USER') {

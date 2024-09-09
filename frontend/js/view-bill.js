@@ -10,6 +10,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const billTableBody = document.querySelector('#billTable tbody');
     let totalPrice = 0;
 
+    //add details of each sale item as a row to the table
+
     saleItems.forEach(item => {
         const row = document.createElement('tr');
         row.innerHTML = `

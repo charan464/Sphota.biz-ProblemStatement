@@ -12,7 +12,7 @@
       <p>You are being logged out...</p>
     </div>
     <script>
-      localStorage.removeItem("authToken");
+      localStorage.removeItem("jwtToken");
       setTimeout(() => {
         window.location.href = "index.html";
       }, 2000);
