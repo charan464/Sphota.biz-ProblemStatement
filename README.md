@@ -1,25 +1,25 @@
 # Steps to setup the project and execute
-- 1.Install and setup Mysql on local and create a database say - "gst_billing_system"
-- 2.clone the repository
-- 3.Open any IDE(IntelliJ or STS) and select open project.Select the folder backend.
-- 4.Make sure Java and Maven are installed on the machine.
-- 5.In application.properties do below
+- Install and setup Mysql on local and create a database say - "gst_billing_system"
+- clone the repository
+- Open any IDE(IntelliJ or STS) and select open project.Select the folder backend.
+- Make sure Java and Maven are installed on the machine.
+- In application.properties do below
     - replace {your_database_name} by the name of the database created in step 2
     - replace {your_password} by the password added while setting up mysql
     - replace {your_secret_key} by any of your choice say - charan3972
     - replace {your_admin_password} by any of your choice say - SaiCharan@8688011464
     - replace {your_frontend_base_url} by any of your choice say - http://localhost:3000
-- 6.Open terminal , go to directory backend
-- 7.Run the command - mvn clean install
-- 8.Post successful build, run the main file - GSTBillingApplication , server starts on port 8085
-- 9.Open VS code
-- 10.select folder frontend
-- 11.Open terminal and run the command - http-server -p 3000 , server starts on port 3000
-- 12.Open http://localhost:3000/index.html
-- 13.Now we can login as admin or user and do the operations.
-- 14.To login as user , first login as admin and add user and then use those creds to login as user.
-- 15.Admin can add user,add category,add product,view sales,view revenue
-- 16.User can only record sale and view bill
+- Open terminal , go to directory backend
+- Run the command - mvn clean install
+- Post successful build, run the main file - GSTBillingApplication , server starts on port 8085
+- Open VS code
+- select folder frontend
+- Open terminal and run the command - http-server -p 3000 , server starts on port 3000
+- Open http://localhost:3000/index.html
+- Now we can login as admin or user and do the operations.
+- To login as user , first login as admin and add user and then use those creds to login as user.
+- Admin can add user,add category,add product,view sales,view revenue
+- User can only record sale and view bill
 
 # tables with sample data
 ## users
@@ -61,70 +61,306 @@
 </table>
 
 
-- user_roles
-- +---------+-------+
-- | user_id | role  |
-- +---------+-------+
-- |       1 | ADMIN |
-- |       2 | USER  |
-- |       3 | USER  |
-- |       4 | USER  |
-- |       5 | USER  |
-- +---------+-------+
+## user_roles
+<table border="1">
+  <thead>
+    <tr>
+      <th>user_id</th>
+      <th>role</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>ADMIN</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>USER</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>USER</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>USER</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>USER</td>
+    </tr>
+  </tbody>
+</table>
 
-- product_category
-- +----+----------+-------------+
-- | id | gst_rate | name        |
-- +----+----------+-------------+
-- |  1 |        5 | Food        |
-- |  2 |       10 | Footwear    |
-- |  3 |       20 | Electronics |
-- +----+----------+-------------+
 
-- product
-- +----+---------+-------+-------------+
-- | id | name    | price | category_id |
-- +----+---------+-------+-------------+
-- |  1 | Mobile  | 20000 |           3 |
-- |  2 | Laptop  | 50000 |           3 |
-- |  3 | 1kgRice |    50 |           1 |
-- |  4 | Sandals |  1000 |           2 |
-- +----+---------+-------+-------------+
+## product_category
+<table border="1">
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>gst_rate</th>
+      <th>name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>5</td>
+      <td>Food</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>10</td>
+      <td>Footwear</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>20</td>
+      <td>Electronics</td>
+    </tr>
+  </tbody>
+</table>
 
-- sale
-- +----+------------+------------+--------------+
-- | id | sale_date  | tax_amount | total_amount |
-- +----+------------+------------+--------------+
-- |  1 | 2024-09-09 |    24407.5 |     148557.5 |
-- |  2 | 2024-09-09 |      14000 |        84000 |
-- |  3 | 2024-09-09 |       8000 |        48000 |
-- |  4 | 2024-09-09 |       8000 |        48000 |
-- |  5 | 2024-09-09 |       8300 |        51300 |
-- |  6 | 2024-09-09 |     4007.5 |      24157.5 |
-- |  7 | 2024-09-09 |      20000 |       120000 |
-- |  8 | 2024-09-09 |      28000 |       168000 |
-- +----+------------+------------+--------------+
 
-- sale_item
-- +----+----------+------------+--------------+------------+---------+
-- | id | quantity | tax_amount | total_amount | product_id | sale_id |
-- +----+----------+------------+--------------+------------+---------+
-- |  1 |        1 |       4000 |        24000 |          1 |       1 |
-- |  2 |        2 |      20000 |       120000 |          2 |       1 |
-- |  3 |        3 |        7.5 |        157.5 |          3 |       1 |
-- |  4 |        4 |        400 |         4400 |          4 |       1 |
-- |  5 |        1 |       4000 |        24000 |          1 |       2 |
-- |  6 |        1 |      10000 |        60000 |          2 |       2 |
-- |  7 |        2 |       8000 |        48000 |          1 |       3 |
-- |  8 |        2 |       8000 |        48000 |          1 |       4 |
-- |  9 |        2 |       8000 |        48000 |          1 |       5 |
-- | 10 |        3 |        300 |         3300 |          4 |       5 |
-- | 11 |        1 |       4000 |        24000 |          1 |       6 |
-- | 12 |        3 |        7.5 |        157.5 |          3 |       6 |
-- | 13 |        2 |      20000 |       120000 |          2 |       7 |
-- | 14 |        2 |       8000 |        48000 |          1 |       8 |
-- | 15 |        2 |      20000 |       120000 |          2 |       8 |
-- +----+----------+------------+--------------+------------+---------+
+## product
+<table border="1">
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>name</th>
+      <th>price</th>
+      <th>category_id</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>Mobile</td>
+      <td>20000</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Laptop</td>
+      <td>50000</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>1kgRice</td>
+      <td>50</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Sandals</td>
+      <td>1000</td>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table>
+
+
+## sale
+<table border="1">
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>sale_date</th>
+      <th>tax_amount</th>
+      <th>total_amount</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>2024-09-09</td>
+      <td>24407.5</td>
+      <td>148557.5</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>2024-09-09</td>
+      <td>14000</td>
+      <td>84000</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>2024-09-09</td>
+      <td>8000</td>
+      <td>48000</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>2024-09-09</td>
+      <td>8000</td>
+      <td>48000</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>2024-09-09</td>
+      <td>8300</td>
+      <td>51300</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>2024-09-09</td>
+      <td>4007.5</td>
+      <td>24157.5</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>2024-09-09</td>
+      <td>20000</td>
+      <td>120000</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>2024-09-09</td>
+      <td>28000</td>
+      <td>168000</td>
+    </tr>
+  </tbody>
+</table>
+
+
+## sale_item
+<table border="1">
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>quantity</th>
+      <th>tax_amount</th>
+      <th>total_amount</th>
+      <th>product_id</th>
+      <th>sale_id</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>1</td>
+      <td>4000</td>
+      <td>24000</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>2</td>
+      <td>20000</td>
+      <td>120000</td>
+      <td>2</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>3</td>
+      <td>7.5</td>
+      <td>157.5</td>
+      <td>3</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>4</td>
+      <td>400</td>
+      <td>4400</td>
+      <td>4</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>1</td>
+      <td>4000</td>
+      <td>24000</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>1</td>
+      <td>10000</td>
+      <td>60000</td>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>2</td>
+      <td>8000</td>
+      <td>48000</td>
+      <td>1</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>2</td>
+      <td>8000</td>
+      <td>48000</td>
+      <td>1</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>2</td>
+      <td>8000</td>
+      <td>48000</td>
+      <td>1</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>3</td>
+      <td>300</td>
+      <td>3300</td>
+      <td>4</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>1</td>
+      <td>4000</td>
+      <td>24000</td>
+      <td>1</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>3</td>
+      <td>7.5</td>
+      <td>157.5</td>
+      <td>3</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>2</td>
+      <td>20000</td>
+      <td>120000</td>
+      <td>2</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>2</td>
+      <td>8000</td>
+      <td>48000</td>
+      <td>1</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>2</td>
+      <td>20000</td>
+      <td>120000</td>
+      <td>2</td>
+      <td>8</td>
+    </tr>
+  </tbody>
+</table>
+
 
 # UI images
 
