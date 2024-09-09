@@ -1,25 +1,25 @@
 # Steps to setup the project and execute
-1.Install and setup Mysql on local and create a database say - "gst_billing_system"
-2.clone the repository
-3.Open any IDE(IntelliJ or STS) and select open project.Select the folder backend.
-4.Make sure Java and Maven are installed on the machine.
-5.In application.properties do below
-    replace {your_database_name} by the name of the database created in step 2
-    replace {your_password} by the password added while setting up mysql
-    replace {your_secret_key} by any of your choice say - charan3972
-    replace {your_admin_password} by any of your choice say - SaiCharan@8688011464
-    replace {your_frontend_base_url} by any of your choice say - http://localhost:3000
-6.Open terminal , go to directory backend
-7.Run the command - mvn clean install
-8.Post successful build, run the main file - GSTBillingApplication , server starts on port 8085
-9.Open VS code
-10.select folder frontend
-11.Open terminal and run the command - http-server -p 3000 , server starts on port 3000
-12.Open http://localhost:3000/index.html
-13.Now we can login as admin or user and do the operations.
-14.To login as user , first login as admin and add user and then use those creds to login as user.
-15.Admin can add user,add category,add product,view sales,view revenue
-16.User can only record sale and view bill
+- 1.Install and setup Mysql on local and create a database say - "gst_billing_system"
+- 2.clone the repository
+- 3.Open any IDE(IntelliJ or STS) and select open project.Select the folder backend.
+- 4.Make sure Java and Maven are installed on the machine.
+- 5.In application.properties do below
+    - replace {your_database_name} by the name of the database created in step 2
+    - replace {your_password} by the password added while setting up mysql
+    - replace {your_secret_key} by any of your choice say - charan3972
+    - replace {your_admin_password} by any of your choice say - SaiCharan@8688011464
+    - replace {your_frontend_base_url} by any of your choice say - http://localhost:3000
+- 6.Open terminal , go to directory backend
+- 7.Run the command - mvn clean install
+- 8.Post successful build, run the main file - GSTBillingApplication , server starts on port 8085
+- 9.Open VS code
+- 10.select folder frontend
+- 11.Open terminal and run the command - http-server -p 3000 , server starts on port 3000
+- 12.Open http://localhost:3000/index.html
+- 13.Now we can login as admin or user and do the operations.
+- 14.To login as user , first login as admin and add user and then use those creds to login as user.
+- 15.Admin can add user,add category,add product,view sales,view revenue
+- 16.User can only record sale and view bill
 
 # tables with sample data
 users
